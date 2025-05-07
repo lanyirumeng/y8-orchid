@@ -2,6 +2,10 @@ import os
 import torch
 from ultralytics import YOLO
 
+# 设置环境变量以优化显存分配和调试
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:32"
+os.environ["CUDA_LAUNCH_BLOCKING"] = "1"  # 同步 CUDA 调用
+
 def main():
     # 配置参数
     model_name = "yolov8l.pt"  
